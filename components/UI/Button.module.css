@@ -1,0 +1,18 @@
+.btn {
+  margin-top: 2rem;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #5f1a37; /* BTN*/
+  text-transform: uppercase;
+  border: 2px solid #5f1a37; /* BTN */
+  border-radius: 15px;
+  padding: 0.9rem 1.6rem;
+}
+
+.btn:hover,
+.btn:focus {
+  color: #fff; /* BTN*/
+  border: 2px solid #5f1a37;
+  background: #5f1a37;
+  cursor: pointer;
+}

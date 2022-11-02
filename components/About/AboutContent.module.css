@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 85vh;
+  color: #5f1a37;
+}
+
+.biography {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 25px 0 70px;
+}
+
+.biography h4 {
+  font-size: 2.5rem;
+}
+
+.biography p {
+  font-size: 1.5rem;
+}
+
+.profile {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-img {
+  border: 10px solid #4163e0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.profile h2 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+.profile p {
+  font-size: 1.5rem;
+}

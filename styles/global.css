@@ -1,0 +1,22 @@
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 100px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  /* background-image: linear-gradient(to bottom right, #eee, #ddd); */
+  background-image: url("../img/ocean.jpg");
+  background-repeat: repeat;
+  background-size: 100%;
+  /* background-position: center; */
+}
+
+.icon {
+  width: 15px;
+}

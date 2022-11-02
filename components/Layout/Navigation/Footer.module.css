@@ -1,0 +1,72 @@
+.footer {
+  flex: 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-top: 1px solid #28363a; /* Border Line*/
+  background-image: linear-gradient(to right, #4163e0, #3e87d6);
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.info p {
+  color: #fff; /* Text */
+}
+
+.phone,
+.email {
+  margin: 0 0 0 25px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.email:hover,
+.email:active,
+.phone:hover,
+.phone:active {
+  color: #5f1a37;
+}
+
+.i-email,
+.i-phone {
+  width: 15px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+}
+
+.email {
+  padding: 10px 0 5px 15px;
+}
+
+.phone {
+  padding: 5px 0 10px 15px;
+}
+
+@media screen and (max-width: 991px) {
+  .footer {
+    padding: 6rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 5rem 2rem;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 496px) {
+  .footer {
+    padding: 5rem 2rem;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
