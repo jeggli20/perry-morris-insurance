@@ -1,4 +1,4 @@
-import Form from "../UI/Form";
+import Form from "../UI/Form/Form";
 import classes from "./ContactSection.module.css";
 
 const ContactSection = () => {

@@ -13,19 +13,39 @@
 }
 
 .content {
-  width: 45%;
+  width: 30%;
   border-left: 1px solid #5f1a37; /* Small Text*/
   padding-left: 4rem;
 }
 
 .content-profile {
   display: flex;
-  flex-direction: ;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.content-profile a {
+  cursor: pointer;
+  color: #fff;
+  margin: 5px 0;
+  font-size: 1.5rem;
+}
+
+.i-pointer {
+  margin: 0 3px;
+  height: 15px;
+}
+
+.display-bio {
+  animation: spin 0.5s forwards;
 }
 
 .profile {
   border: solid 10px #fff;
   border-radius: 50%;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 .content h3,
@@ -49,6 +69,15 @@
   margin: 0.5rem 0;
   padding: 0;
   text-align: start;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
 }
 
 @media screen and (max-width: 991px) {

@@ -1,22 +1,13 @@
 import { useState, useRef } from "react";
-// import nodemailer from "nodemailer";
-// import * as dotenv from "dotenv";
 
-import Button from "./Button";
+import Button from "../Button";
 import classes from "./Form.module.css";
-
-// dotenv.config();
-
-// const emailUser = process.env.EMAIL_INSURANCE;
-// const emailPassword = process.env.EMAIL_INSURANCE_PASSWORD;
-// const port = process.env.EMAIL_PORT;
-// const host = process.env.EMAIL_HOST;
 
 const isEmpty = (value) => value.trim() === "";
 const isTenChars = (value) => value.trim().length >= 10;
 const validEmail = (value) => value.includes("@");
 
-const Form = (props) => {
+const Form = () => {
   //! Placeholder validity! This validity should be updated!!
   const [formInputValid, setFormInputValid] = useState({
     name: true,
@@ -35,6 +26,14 @@ const Form = (props) => {
   const addressInputRef = useRef();
   const dobInputRef = useRef();
 
+  const fixDate = (date) => {
+    const year = date.getUTCFullYear();
+    const month = date.getUTCMonth() + 1;
+    const day = date.getUTCDate();
+
+    return `${month}/${day}/${year}`;
+  };
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
@@ -43,7 +42,7 @@ const Form = (props) => {
     const enteredProvider = providerInputRef.current.value;
     const enteredMessage = messageInputRef.current.value;
     const enteredAddress = addressInputRef.current.value;
-    const enteredDOB = dobInputRef.current.value;
+    const enteredDOB = fixDate(new Date(dobInputRef.current.value));
 
     const enteredNameIsValid = !isEmpty(enteredName);
     const enteredProviderIsValid = !isEmpty(enteredProvider);
@@ -59,7 +58,7 @@ const Form = (props) => {
       provider: enteredProviderIsValid,
       message: enteredMessageIsValid,
       address: enteredAddressIsValid,
-      dob: enteredDOB,
+      dob: enteredDOBisValid,
     });
 
     const formIsValid =
@@ -74,32 +73,17 @@ const Form = (props) => {
       return;
     }
 
-    const email = {
-      name: enteredName,
-      email: enteredEmail,
-      provider: enteredProvider,
-      message: enteredMessage,
-      address: enteredAddress,
-      dob: enteredDOB,
-    };
-
-    //! Right now isSubmitting and isComplete are staying false even after I try to set them
-
-    // setIsSubmitting(true);
-    // props.onSubmitForm(isSubmitting);
-
-    const response = await fetch("/api/form-submission", {
+    await fetch("/api/form-submission", {
       method: "POST",
       body: JSON.stringify({
-        email,
+        name: enteredName,
+        email: enteredEmail,
+        provider: enteredProvider,
+        message: enteredMessage,
+        address: enteredAddress,
+        dob: enteredDOB,
       }),
     });
-
-    // setIsSubmitting(false);
-    // props.onSubmitForm(isSubmitting);
-
-    // setIsComplete(true);
-    // props.onSubmitComplete(isComplete);
   };
 
   return (
@@ -118,9 +102,9 @@ const Form = (props) => {
         className={`${!formInputValid.name ? classes.invalid : ""}`}
       />
       {!formInputValid.name && (
-        <p className={classes.errorMessage}>Please enter a valid name</p>
+        <p className={classes.errorMessage}>Please enter a name</p>
       )}
-      <label htmlFor="email">Email</label>
+      <label htmlFor="email">Email Address</label>
       <input
         id="email"
         type="email"

@@ -1,9 +1,20 @@
+import { useState } from "react";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSortDown } from "@fortawesome/free-solid-svg-icons";
 
 import profile from "../../img/profile.jpg";
 import classes from "./InfoSection.module.css";
 
 const InfoSection = () => {
+  const [displayBio, setDisplayBio] = useState(false);
+
+  const onClickHandler = () => {
+    console.log("Start");
+    setDisplayBio((prevState) => !prevState);
+    console.log("End");
+  };
+
   return (
     <section className={classes.container}>
       <div className={classes["content-profile"]} data-aos="fade-up">
@@ -13,6 +24,15 @@ const InfoSection = () => {
           className={classes.profile}
           width={200}
         />
+        <a onClick={onClickHandler}>
+          Why Perry?
+          <FontAwesomeIcon
+            className={`icon ${classes["i-pointer"]} ${
+              displayBio ? classes["display-bio"] : ""
+            }`}
+            icon={faSortDown}
+          />
+        </a>
       </div>
       <div className={classes.content} data-aos="fade-up">
         <h3>Locations</h3>
