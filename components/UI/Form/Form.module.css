@@ -1,131 +1,156 @@
 .form {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 100%;
 }
 
 .form label {
-  color: #5f1a37;
+	color: #5f1a37;
 }
 
 .form input,
 .form textarea {
-  box-sizing: border-box;
-  color: #4163e0; /* Text Area Color*/
-  font-size: 1.1rem;
-  width: 100%;
-  min-height: 50px;
-  padding: 15px;
-  border: 1px solid #3e87d6; /* Border Box */
-  border-radius: 15px;
-  outline: none;
-  margin: 13px 0;
+	box-sizing: border-box;
+	color: #4163e0; /* Text Area Color*/
+	font-size: 1.1rem;
+	width: 100%;
+	min-height: 50px;
+	padding: 15px;
+	border: 1px solid #3e87d6; /* Border Box */
+	border-radius: 15px;
+	outline: none;
+	margin: 13px 0;
 }
 
 .form input:focus,
 .form textarea:focus {
-  color: #5f1a37;
-  border: 1px solid #5f1a37; /* Border Box Clicked/Focus*/
-  background-color: rgba(95, 26, 55, 0.2); /* Border color just faded out */
+	color: #5f1a37;
+	border: 1px solid #5f1a37; /* Border Box Clicked/Focus*/
+	background-color: rgba(95, 26, 55, 0.2); /* Border color just faded out */
 }
 
 .form input::placeholder,
 .form textarea::placeholder {
-  color: rgba(62, 135, 214, 0.6); /* Place Holder */
-  font-size: 1.1rem;
+	color: rgba(62, 135, 214, 0.6); /* Place Holder */
+	font-size: 1.1rem;
 }
 
 .form textarea {
-  height: 80%;
+	height: 80%;
 }
 
 .invalid {
-  border: 1px solid red; /* Border Box Clicked/Focus*/
-  background-color: rgba(255, 0, 0, 0.2);
+	border: 1px solid red; /* Border Box Clicked/Focus*/
+	background-color: rgba(255, 0, 0, 0.2);
 }
 
 .errorMessage {
-  color: red;
-  padding: 0 0 30px 0;
-  font-size: 1.1rem;
+	color: red;
+	padding: 0 0 30px 0;
+	font-size: 1.1rem;
 }
 
 .circle {
-  display: inline-block;
-  background-color: #3e87d6;
-  height: 15px;
-  width: 15px;
-  margin: 0 3px;
-  border-radius: 25px;
+	display: inline-block;
+	background-color: #3e87d6;
+	height: 15px;
+	width: 15px;
+	margin: 0 3px;
+	border-radius: 25px;
 }
 
 .loader {
-  height: 50px;
-  margin-top: 50px;
+	height: 50px;
+	margin-top: 50px;
 }
 
 .ball-1 {
-  animation-name: bounce;
-  -webkit-animation-name: bounce;
-  animation-delay: 0.5s;
-  -webkit-animation-delay: 0.5s;
-  animation-duration: 1.2s;
-  -webkit-animation-duration: 1.2s;
-  animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
+	animation-name: bounce;
+	-webkit-animation-name: bounce;
+	animation-delay: 0.5s;
+	-webkit-animation-delay: 0.5s;
+	animation-duration: 1.2s;
+	-webkit-animation-duration: 1.2s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
 }
 
 .ball-2 {
-  animation-name: bounce;
-  -webkit-animation-name: bounce;
-  animation-delay: 0.6s;
-  -webkit-animation-delay: 0.6s;
-  animation-duration: 1.2s;
-  -webkit-animation-duration: 1.2s;
-  animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
+	animation-name: bounce;
+	-webkit-animation-name: bounce;
+	animation-delay: 0.6s;
+	-webkit-animation-delay: 0.6s;
+	animation-duration: 1.2s;
+	-webkit-animation-duration: 1.2s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
 }
 
 .ball-3 {
-  animation-name: bounce;
-  -webkit-animation-name: bounce;
-  animation-delay: 0.7s;
-  -webkit-animation-delay: 0.7s;
-  animation-duration: 1.2s;
-  -webkit-animation-duration: 1.2s;
-  animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
+	animation-name: bounce;
+	-webkit-animation-name: bounce;
+	animation-delay: 0.7s;
+	-webkit-animation-delay: 0.7s;
+	animation-duration: 1.2s;
+	-webkit-animation-duration: 1.2s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+.subBtn {
+	--c: rgb(6, 6, 6);
+	margin: 5px 5px 5px 5px;
+	text-decoration: none;
+	font-size: 1.3rem;
+	color: #5f1a37; /* BTN*/
+	text-transform: uppercase;
+	border: 1.5px solid var(--c); /* BTN */
+	border-radius: 15px;
+	padding: 0.9rem 1.6rem;
+	background: linear-gradient(#5f1a37 0 0) no-repeat
+		calc(200% - var(--i, 0) * 100%) 100% / 200%
+		calc(100% * var(--i, 0) + 0.08em);
+	transition: 0.2s calc(var(--i, 0) * 0.2s),
+		background-position 0.2s calc(0.2s - calc(var(--i, 0) * 0.2s));
+}
+.subBtn:focus,
+.subBtn:hover,
+.subBtn:active {
+	color: #fff; /* BTN*/
+	border: 3px solid var(--c);
+	cursor: pointer;
+	--i: 1;
+	cursor: pointer;
 }
 
 @keyframes bounce {
-  0% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(23px);
-  }
-  60% {
-    transform: translateY(-25px);
-  }
-  80% {
-    transform: translateY(0);
-  }
+	0% {
+		transform: translateY(0);
+	}
+	40% {
+		transform: translateY(23px);
+	}
+	60% {
+		transform: translateY(-25px);
+	}
+	80% {
+		transform: translateY(0);
+	}
 }
 
 @media screen and (max-width: 991px) {
-  .form input,
-  .form textarea {
-    padding: 12px;
-    margin: 10px 0;
-  }
+	.form input,
+	.form textarea {
+		padding: 12px;
+		margin: 10px 0;
+	}
 
-  .form input::placeholder {
-    font-size: 1rem;
-  }
+	.form input::placeholder {
+		font-size: 1rem;
+	}
 
-  .form textarea {
-    font-size: 1rem;
-  }
+	.form textarea {
+		font-size: 1rem;
+	}
 }

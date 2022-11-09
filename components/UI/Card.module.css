@@ -1,41 +1,44 @@
 .card {
-  /* display: absolute; */
-  min-width: 340px;
-  max-width: 340px;
-  min-height: 390px;
-  max-height: 420px;
-  box-sizing: border-box;
-  background-color: #4163e0;
-  box-shadow: 0 1.6px 3.6px rgba(0, 0, 0, 0.01),
-    0 4.4px 10px rgba(0, 0, 0, 0.015), 0 10.6px 24.1px rgba(0, 0, 0, 0.02),
-    0 35px 80px rgba(0, 0, 0, 0.03);
-  cursor: pointer;
-  margin: 10px;
-  border-radius: 15px;
+	/* display: absolute; */
+	min-width: 340px;
+	max-width: 340px;
+	min-height: 390px;
+	max-height: 420px;
+	box-sizing: border-box;
+	background-color: #4163e0;
+	box-shadow: 0.5px 1.6px 3.6px rgba(0, 0, 0, 0.7),
+		0 4.4px 10px rgba(0, 0, 0, 0.015), 0 10.6px 24.1px rgba(0, 0, 0, 0.02),
+		0 35px 80px rgba(0, 0, 0, 0.03);
+	cursor: pointer;
+	margin: 10px;
+	border-radius: 15px;
+	transition: transform 0.2s; /* animation */
 }
-
+.card:hover {
+	transform: scale(1.12); /* hover animation */
+}
 .content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 15px;
 }
 
 .card_img {
-  border-radius: 15px 15px 0 0;
+	border-radius: 15px 15px 0 0;
 }
 
 .content h4 {
-  text-align: center;
-  color: #fff; /* Header*/
-  text-shadow: 2px 2px #5f1a37;
-  font-size: 1.7rem;
+	text-align: center;
+	color: #fff; /* Header*/
+	text-shadow: 2px 2px #5f1a37;
+	font-size: 1.7rem;
 }
 
 .content p {
-  height: 100px;
-  text-align: start;
-  color: #fff !important; /* Sub-Header*/
-  font-size: 1.1rem;
-  overflow: auto;
+	height: 100px;
+	text-align: start;
+	color: #fff !important; /* Sub-Header*/
+	font-size: 1.1rem;
+	overflow: auto;
 }
