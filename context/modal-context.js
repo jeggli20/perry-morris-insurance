@@ -5,6 +5,7 @@ const modalDescriptions = [
   "Some sample text for family coverage.",
   "Some sample text for small business coverage.",
   "Some sample text for retired coverage.",
+  "Some sample text for Why Perry.",
 ];
 
 const ModalContext = createContext({
@@ -36,9 +37,12 @@ export const ModalContextProvider = (props) => {
     } else if (eventCurrentTarget.contains("card_smb")) {
       setModalTitle("Small Businesses");
       setModalDescription(modalDescriptions[2]);
-    } else {
+    } else if (eventCurrentTarget.contains("card_ret")) {
       setModalTitle("Retired");
       setModalDescription(modalDescriptions[3]);
+    } else {
+      setModalTitle("Why Perry?");
+      setModalDescription(modalDescriptions[4]);
     }
 
     setIsShown(true);

@@ -35,7 +35,7 @@
 .content p {
   height: 100px;
   text-align: start;
-  color: #fff; /* Sub-Header*/
+  color: #fff !important; /* Sub-Header*/
   font-size: 1.1rem;
   overflow: auto;
 }

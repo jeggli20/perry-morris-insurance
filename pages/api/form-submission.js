@@ -23,9 +23,10 @@ const emailAwait = async (emails) => {
   const transporter = createTransport(transport);
   await transporter.sendMail(emails[0]);
   await transporter.sendMail(emails[1]);
+  return;
 };
 
-const handler = (req) => {
+const handler = async (req, res) => {
   if (req.method === "POST") {
     const data = req.body;
     const dataObj = JSON.parse(data);
@@ -50,7 +51,9 @@ const handler = (req) => {
 
     const emailOptions = [adminOptions, clientOptions];
 
-    emailAwait(emailOptions);
+    await emailAwait(emailOptions);
+
+    res.status(200).json({});
   }
 };
 

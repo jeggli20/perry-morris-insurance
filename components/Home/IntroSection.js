@@ -16,7 +16,7 @@ const IntroSection = () => {
         <p>Our number one priority is you!</p>
         <h2>
           <span className={classes.emphasis}>Insurance</span> to make you feel
-          safe and secure
+          safe&nbsp;and secure
         </h2>
         <Button onClick={buttonRedirectHandler} tag="insurance">
           Insurance Policies

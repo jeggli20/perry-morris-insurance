@@ -1,6 +1,3 @@
-// import Image from "next/image";
-
-// import family from "../../img/family.jpg";
 import EmailStyles from "./EmailStyles";
 
 const EmailAdmin = (data) => {
@@ -10,9 +7,6 @@ const EmailAdmin = (data) => {
       <header>
         <h1 style={EmailStyles.titleStyles}>Perry Morris</h1>
       </header>
-      {/* <div className={classes.banner}>
-        <Image src={family} alt="" fill />
-      </div> */}
       <main style={EmailStyles.contentStyles}>
         <h1 style={EmailStyles.headerStyles}>
           You have received a new message from {name}

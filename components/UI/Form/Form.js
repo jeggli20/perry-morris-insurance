@@ -1,92 +1,135 @@
-import { useState, useRef } from "react";
+import { Fragment, useContext } from "react";
 
 import Button from "../Button";
+import useInput from "../../../hooks/useInput";
+import FormContext from "../../../context/form-context";
 import classes from "./Form.module.css";
 
-const isEmpty = (value) => value.trim() === "";
+const isNotEmpty = (value) => value.trim() !== "";
 const isTenChars = (value) => value.trim().length >= 10;
 const validEmail = (value) => value.includes("@");
+const fixDate = (date) => {
+  const year = date.getUTCFullYear();
+  const month = date.getUTCMonth() + 1;
+  const day = date.getUTCDate();
+
+  return `${month}/${day}/${year}`;
+};
 
 const Form = () => {
-  //! Placeholder validity! This validity should be updated!!
-  const [formInputValid, setFormInputValid] = useState({
-    name: true,
-    email: true,
-    provider: true,
-    message: true,
-    address: true,
-    dob: true,
-  });
-  // const [isSubmitting, setIsSubmitting] = useState(false);
-  // const [isComplete, setIsComplete] = useState(false);
-  const nameInputRef = useRef();
-  const emailInputRef = useRef();
-  const providerInputRef = useRef();
-  const messageInputRef = useRef();
-  const addressInputRef = useRef();
-  const dobInputRef = useRef();
+  const formCtx = useContext(FormContext);
 
-  const fixDate = (date) => {
-    const year = date.getUTCFullYear();
-    const month = date.getUTCMonth() + 1;
-    const day = date.getUTCDate();
+  const {
+    value: enteredName,
+    isValid: enteredNameIsValid,
+    hasError: nameHasError,
+    valueChangeHandler: nameChangeHandler,
+    valueBlurHandler: nameBlurHandler,
+    reset: resetName,
+  } = useInput(isNotEmpty);
 
-    return `${month}/${day}/${year}`;
-  };
+  const {
+    value: enteredEmail,
+    isValid: enteredEmailIsValid,
+    hasError: emailHasError,
+    valueChangeHandler: emailChangeHandler,
+    valueBlurHandler: emailBlurHandler,
+    reset: resetEmail,
+  } = useInput(validEmail);
+
+  const {
+    value: enteredDOB,
+    isValid: enteredDOBIsValid,
+    hasError: dobHasError,
+    valueChangeHandler: dobChangeHandler,
+    valueBlurHandler: dobBlurHandler,
+    reset: resetDOB,
+  } = useInput(isNotEmpty);
+
+  const {
+    value: enteredAddress,
+    isValid: enteredAddressIsValid,
+    hasError: addressHasError,
+    valueChangeHandler: addressChangeHandler,
+    valueBlurHandler: addressBlurHandler,
+    reset: resetAddress,
+  } = useInput(isNotEmpty);
+
+  const {
+    value: enteredProvider,
+    isValid: enteredProviderIsValid,
+    hasError: providerHasError,
+    valueChangeHandler: providerChangeHandler,
+    valueBlurHandler: providerBlurHandler,
+    reset: resetProvider,
+  } = useInput(isNotEmpty);
+
+  const {
+    value: enteredMessage,
+    isValid: enteredMessageIsValid,
+    hasError: messageHasError,
+    valueChangeHandler: messageChangeHandler,
+    valueBlurHandler: messageBlurHandler,
+    reset: resetMessage,
+  } = useInput(isTenChars);
+
+  let formIsValid = false;
+
+  if (
+    enteredNameIsValid &&
+    enteredEmailIsValid &&
+    enteredDOBIsValid &&
+    enteredAddressIsValid &&
+    enteredProviderIsValid &&
+    enteredMessageIsValid
+  ) {
+    formIsValid = true;
+  }
+
+  // const newFormHandler = () => {
+
+  // }
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-
-    const enteredName = nameInputRef.current.value;
-    const enteredEmail = emailInputRef.current.value;
-    const enteredProvider = providerInputRef.current.value;
-    const enteredMessage = messageInputRef.current.value;
-    const enteredAddress = addressInputRef.current.value;
-    const enteredDOB = fixDate(new Date(dobInputRef.current.value));
-
-    const enteredNameIsValid = !isEmpty(enteredName);
-    const enteredProviderIsValid = !isEmpty(enteredProvider);
-    const enteredAddressIsValid = !isEmpty(enteredAddress);
-    //! This needs to updated specifically
-    const enteredDOBisValid = !isEmpty(enteredDOB);
-    const enteredMessageIsValid = isTenChars(enteredMessage);
-    const enteredEmailIsValid = validEmail(enteredEmail);
-
-    setFormInputValid({
-      name: enteredNameIsValid,
-      email: enteredEmailIsValid,
-      provider: enteredProviderIsValid,
-      message: enteredMessageIsValid,
-      address: enteredAddressIsValid,
-      dob: enteredDOBisValid,
-    });
-
-    const formIsValid =
-      enteredNameIsValid &&
-      enteredEmailIsValid &&
-      enteredProviderIsValid &&
-      enteredMessageIsValid &&
-      enteredAddressIsValid &&
-      enteredDOBisValid;
 
     if (!formIsValid) {
       return;
     }
 
-    await fetch("/api/form-submission", {
-      method: "POST",
-      body: JSON.stringify({
-        name: enteredName,
-        email: enteredEmail,
-        provider: enteredProvider,
-        message: enteredMessage,
-        address: enteredAddress,
-        dob: enteredDOB,
-      }),
-    });
+    formCtx.submittingHandler();
+
+    try {
+      fetch("/api/form-submission", {
+        method: "POST",
+        body: JSON.stringify({
+          name: enteredName,
+          email: enteredEmail,
+          provider: enteredProvider,
+          message: enteredMessage,
+          address: enteredAddress,
+          dob: enteredDOB,
+        }),
+      }).then(() => {
+        formCtx.completionHandler();
+
+        resetName();
+        resetEmail();
+        resetDOB();
+        resetAddress();
+        resetProvider();
+        resetMessage();
+
+        // if (newForm) {
+        //   formCtx.resetForm();
+        // }
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
-  return (
+  const formContent = (
     <form
       className={classes.form}
       data-aos="fade-up"
@@ -98,10 +141,12 @@ const Form = () => {
         type="text"
         name="name"
         placeholder="Name"
-        ref={nameInputRef}
-        className={`${!formInputValid.name ? classes.invalid : ""}`}
+        value={enteredName}
+        onChange={nameChangeHandler}
+        onBlur={nameBlurHandler}
+        className={`${nameHasError ? classes.invalid : ""}`}
       />
-      {!formInputValid.name && (
+      {nameHasError && (
         <p className={classes.errorMessage}>Please enter a name</p>
       )}
       <label htmlFor="email">Email Address</label>
@@ -110,10 +155,12 @@ const Form = () => {
         type="email"
         name="email"
         placeholder="Email"
-        ref={emailInputRef}
-        className={`${!formInputValid.email ? classes.invalid : ""}`}
+        value={enteredEmail}
+        onChange={emailChangeHandler}
+        onBlur={emailBlurHandler}
+        className={`${emailHasError ? classes.invalid : ""}`}
       />
-      {!formInputValid.email && (
+      {emailHasError && (
         <p className={classes.errorMessage}>Please enter a valid email</p>
       )}
       <label htmlFor="dob">Date of Birth</label>
@@ -121,10 +168,12 @@ const Form = () => {
         id="dob"
         type="date"
         name="dob"
-        ref={dobInputRef}
-        className={`${!formInputValid.dob ? classes.invalid : ""}`}
+        value={enteredDOB}
+        onChange={dobChangeHandler}
+        onBlur={dobBlurHandler}
+        className={`${dobHasError ? classes.invalid : ""}`}
       />
-      {!formInputValid.dob && (
+      {dobHasError && (
         <p className={classes.errorMessage}>Please enter a valid date</p>
       )}
       <label htmlFor="address">Physical Address</label>
@@ -133,10 +182,12 @@ const Form = () => {
         type="text"
         name="address"
         placeholder="Current address"
-        ref={addressInputRef}
-        className={`${!formInputValid.address ? classes.invalid : ""}`}
+        value={enteredAddress}
+        onChange={addressChangeHandler}
+        onBlur={addressBlurHandler}
+        className={`${addressHasError ? classes.invalid : ""}`}
       />
-      {!formInputValid.address && (
+      {addressHasError && (
         <p className={classes.errorMessage}>Please enter a valid address</p>
       )}
       <label htmlFor="provider">Who is your current provider?</label>
@@ -145,10 +196,12 @@ const Form = () => {
         type="text"
         name="provider"
         placeholder="Current provider"
-        ref={providerInputRef}
-        className={`${!formInputValid.provider ? classes.invalid : ""}`}
+        value={enteredProvider}
+        onChange={providerChangeHandler}
+        onBlur={providerBlurHandler}
+        className={`${providerHasError ? classes.invalid : ""}`}
       />
-      {!formInputValid.provider && (
+      {providerHasError && (
         <p className={classes.errorMessage}>Please enter a valid provider</p>
       )}
       <label htmlFor="message">How can we help you?</label>
@@ -156,16 +209,42 @@ const Form = () => {
         id="message"
         name="message"
         placeholder="Message"
-        ref={messageInputRef}
-        className={`${!formInputValid.message ? classes.invalid : ""}`}
+        value={enteredMessage}
+        onChange={messageChangeHandler}
+        onBlur={messageBlurHandler}
+        className={`${messageHasError ? classes.invalid : ""}`}
       ></textarea>
-      {!formInputValid.message && (
+      {messageHasError && (
         <p className={classes.errorMessage}>
           Your message should be at least 10 characters long
         </p>
       )}
-      <Button type="submit">Send Message</Button>
+      <Button type="submit" disabled={!formIsValid}>
+        Send Message
+      </Button>
     </form>
+  );
+
+  const sendingContent = (
+    <div className={classes.loader}>
+      <div className={`${classes.circle} ${classes["ball-1"]}`}></div>
+      <div className={`${classes.circle} ${classes["ball-2"]}`}></div>
+      <div className={`${classes.circle} ${classes["ball-3"]}`}></div>
+    </div>
+  );
+
+  const sentContent = (
+    <Button type="button" onClick={formCtx.resetForm}>
+      Submit Another Form?
+    </Button>
+  );
+
+  return (
+    <Fragment>
+      {!formCtx.isSubmitting && !formCtx.isComplete && formContent}
+      {formCtx.isSubmitting && !formCtx.isComplete && sendingContent}
+      {!formCtx.isSubmitting && formCtx.isComplete && sentContent}
+    </Fragment>
   );
 };
 
