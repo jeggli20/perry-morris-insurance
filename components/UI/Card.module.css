@@ -6,7 +6,7 @@
 	max-height: 420px;
 	box-sizing: border-box;
 	background-color: #4163e0;
-	box-shadow: 0.5px 1.6px 3.6px rgba(0, 0, 0, 0.7),
+	box-shadow: -1px -1.6px 3.6px rgba(0, 0, 0, 0.7),
 		0 4.4px 10px rgba(0, 0, 0, 0.015), 0 10.6px 24.1px rgba(0, 0, 0, 0.02),
 		0 35px 80px rgba(0, 0, 0, 0.03);
 	cursor: pointer;
