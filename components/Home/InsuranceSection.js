@@ -58,6 +58,18 @@ const InsuranceSection = (props) => {
             eiusmod tempor
           </p>
         </Card>
+        <Card
+          className="card_propDmg"
+          src={pic}
+          alt="Coverage Umbrella"
+          onShowModal={props.onShowModal}
+        >
+          <h4>Property and Damage</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor
+          </p>
+        </Card>
       </div>
     </section>
   );

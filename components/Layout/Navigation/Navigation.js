@@ -12,10 +12,14 @@ const Navigation = (props) => {
         <Link href="/about">About</Link>
       </li>
       <li>
-        <a href="#insurance">Insurance</a>
+        <Link href="/#insurance" scroll={false}>
+          Insurance
+        </Link>
       </li>
       <li>
-        <a href="#contact">Contact&nbsp;Us</a>
+        <Link href="/#contact" scroll={false}>
+          Contact&nbsp;Us
+        </Link>
       </li>
     </ul>
   );

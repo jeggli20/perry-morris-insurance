@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import Head from "next/head";
 import Script from "next/script";
 
@@ -22,7 +21,6 @@ const HomePage = (props) => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Perry Morris</title>
-        {/* <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> */}
       </Head>
       <IntroSection />
       <InsuranceSection onShowModal={props.onShowModal} />

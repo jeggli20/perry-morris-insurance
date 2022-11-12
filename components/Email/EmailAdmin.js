@@ -1,7 +1,8 @@
 import EmailStyles from "./EmailStyles";
 
 const EmailAdmin = (data) => {
-  const { name, email, provider, message, address, dob } = data.emailObj;
+  const { name, email, provider, message, address, dob, policy } =
+    data.emailObj;
   return (
     <body style={EmailStyles.containerStyles}>
       <header>
@@ -29,6 +30,9 @@ const EmailAdmin = (data) => {
           </li>
           <li>
             Provider: <span style={EmailStyles.infoItemStyles}>{provider}</span>
+          </li>
+          <li>
+            Policy: <span style={EmailStyles.infoItemStyles}>{policy}</span>
           </li>
           <li>
             Message: <span style={EmailStyles.infoItemStyles}>{message}</span>

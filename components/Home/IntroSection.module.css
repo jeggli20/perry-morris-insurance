@@ -13,7 +13,7 @@
 } */
 .container {
   position: relative;
-  min-height: 600px;
+  min-height: 700px;
   background-image: linear-gradient(#4163e0, #3e87d6);
   overflow: hidden;
 }
