@@ -103,12 +103,6 @@ const validEmail = (value) => {
   return re.test(value);
 };
 
-const numRange = (value) => {
-  if (!isNotEmpty(value)) {
-    return false;
-  }
-};
-
 const capitalize = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
@@ -180,9 +174,10 @@ const Form = () => {
     isValid: enteredAddressStateIsValid,
     hasError: addressStateHasError,
     valueChangeHandler: addressStateChangeHandler,
-    valueBlurHandler: addressStateBlurHandler,
     reset: resetAddressState,
-  } = useInput(isString);
+  } = useInput(() => {
+    return true;
+  });
 
   const {
     value: enteredAddressPostal,
@@ -234,9 +229,10 @@ const Form = () => {
     isValid: enteredPolicyIsValid,
     hasError: policyHasError,
     valueChangeHandler: policyChangeHandler,
-    // valueBlurHandler: policyBlurHandler,
     reset: resetPolicy,
-  } = useInput(isString);
+  } = useInput(() => {
+    return true;
+  });
 
   const {
     value: enteredMessage,
@@ -286,11 +282,13 @@ const Form = () => {
           email: enteredEmail,
           address: `${enteredAddressStreet1} ${
             isNotEmpty(enteredAddressStreet2) ? enteredAddressStreet2 : ""
-          } ${enteredAddressCity}, ${enteredAddressState}, ${enteredAddressPostal}`,
+          } ${enteredAddressCity}, ${
+            enteredAddressState === "" ? "AK" : enteredAddressState
+          }, ${enteredAddressPostal}`,
           provider: enteredProvider,
           message: enteredMessage,
           dob: `${enteredDOBMonth}/${enteredDOBDay}/${enteredDOBYear}`,
-          policy: enteredPolicy,
+          policy: enteredPolicy === "" ? "Individual" : enteredPolicy,
         }),
       }).then(() => {
         formCtx.completionHandler();
@@ -502,7 +500,6 @@ const Form = () => {
           <div className={classes["form-item"]}>
             <select
               value={enteredAddressState}
-              size="1"
               onChange={addressStateChangeHandler}
             >
               {stateOptions.map((option) => (
