@@ -1,84 +1,84 @@
 .nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
 }
 
 .nav li {
-  list-style: none;
-  padding-right: 50px;
+   list-style: none;
+   padding-right: 50px;
 }
 
 .nav li a {
-  text-decoration: none;
-  color: #fff; /* Nav text Colors*/
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  font-weight: bolder;
+   text-decoration: none;
+   color: #fff; /* Nav text Colors*/
+   text-transform: uppercase;
+   font-size: 1.2rem;
+   font-weight: bolder;
 }
 
 .nav li a:hover,
 .nav li a.active,
 .nav i:hover {
-  color: #5f1a37; /* Nav Hover Text Color */
-  cursor: pointer;
+   color: #5f1a37; /* Nav Hover Text Color */
+   cursor: pointer;
 }
 
 .nav i {
-  padding-right: 30px;
-  color: #04030f; /*Phone Nav Color Background */
-  font-weight: bolder;
+   padding-right: 30px;
+   color: #04030f; /*Phone Nav Color Background */
+   font-weight: bolder;
 }
 .bar {
-  color: #04030f; /*Nav Three Lines When Device Width */
-  font-weight: lighter;
-  font-size: 1.5rem;
-  position: absolute;
-  top: 35%;
-  right: 7%;
-  display: none;
-  cursor: pointer;
+   color: #04030f; /*Nav Three Lines When Device Width */
+   font-weight: lighter;
+   font-size: 1.5rem;
+   position: absolute;
+   top: 35%;
+   right: 7%;
+   display: none;
+   cursor: pointer;
 }
 
 @media screen and (max-width: 1110px) {
-  .nav li {
-    padding-right: 30px;
-  }
+   .nav li {
+      padding-right: 30px;
+   }
 
-  .nav li a {
-    font-size: 0.9rem;
-  }
+   .nav li a {
+      font-size: 0.9rem;
+   }
 }
 
 @media screen and (max-width: 991px) {
-  .nav {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    right: -400px;
-    width: 300px;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 10;
-    padding-top: 9.5rem;
-    margin-top: 7.8rem;
-    transition: 0.5s;
-  }
+   .nav {
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      align-items: center;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 300px;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 10;
+      padding-top: 9.5rem;
+      margin-top: 7.8rem;
+      transition: 0.5s;
+   }
 
-  .nav li {
-    padding: 4px 0;
-  }
+   .nav li {
+      padding: 4px 0;
+   }
 
-  .nav li a {
-    font-size: 1.2rem;
-    color: #fff;
-  }
+   .nav li a {
+      font-size: 1.2rem;
+      color: #fff;
+   }
 
-  .nav li a:hover {
-    color: #5f1a37;
-  }
+   .nav li a:hover {
+      color: #5f1a37;
+   }
 }
