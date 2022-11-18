@@ -1,86 +1,93 @@
 .navbar {
-  flex: 0 0;
-  position: sticky;
-  top: 0;
-  /* left: 0; */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  /* width: 100vw;
+   flex: 0 0;
+   position: sticky;
+   top: 0;
+   /* left: 0; */
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   /* width: 100vw;
   max-width: 1400px; */
-  /* max-height: 120px; */
-  padding: 1rem 100px;
-  background-image: linear-gradient(#3e87d6, #4163e0);
-  z-index: 90;
+   /* max-height: 120px; */
+   padding: 1rem 100px;
+   background-image: linear-gradient(#3e87d6, #4163e0);
+   z-index: 90;
 }
 
 .navbar h2 {
-  color: #f6f8fa; /* Text Color*/
-  font-size: 1.7rem;
-  font-family: "Ubuntu", sans-serif;
+   color: #f6f8fa; /* Text Color*/
+   font-size: 1.7rem;
+   font-family: "Ubuntu", sans-serif;
 }
 
 .icons {
-  color: #fff;
+   color: #fff;
 }
 
 .icons:hover,
 .icons:active {
-  color: #5f1a37;
+   color: #5f1a37;
 }
 
 .bar {
-  color: #5f1a37; /*Nav Three Lines When Device Width */
-  font-weight: lighter;
-  font-size: 1.5rem;
-  position: absolute;
-  top: 35%;
-  right: 7%;
-  display: none;
-  cursor: pointer;
+   color: #5f1a37; /*Nav Three Lines When Device Width */
+   font-weight: lighter;
+   font-size: 1.5rem;
+   position: absolute;
+   top: 35%;
+   right: 7%;
+   display: none;
+   cursor: pointer;
 }
 
 .nav-show {
-  right: 0px;
+   right: 0px;
 }
 
 @media screen and (max-width: 1042px) {
-  .navbar {
-    padding: 1rem 4.5rem;
-  }
+   .navbar {
+      padding: 1rem 4.5rem;
+   }
 
-  .navbar h2 {
-    font-size: 1.4rem;
-  }
+   .navbar h2 {
+      font-size: 1.4rem;
+   }
 }
 
 @media screen and (max-width: 991px) {
-  .navbar {
-    padding: 1rem 3rem;
-  }
+   .navbar {
+      padding: 1rem 3rem;
+   }
 
-  .navbar h2 {
-    font-size: 1.6rem;
-  }
+   .navbar h2 {
+      font-size: 1.6rem;
+   }
 
-  .icons {
-    display: none;
-  }
+   .icons {
+      display: none;
+   }
 
-  .bar {
-    display: initial;
-  }
+   .bar {
+      display: initial;
+   }
 }
 
 @media screen and (max-width: 768px) {
-  .navbar h2 {
-    font-size: 1.5rem;
-  }
+   .navbar {
+      justify-content: space-around;
+   }
+   .navbar h2 {
+      font-size: 1.5rem;
+   }
 }
 
 @media screen and (max-width: 496px) {
-  .navbar h2 {
-    font-size: 1.5rem;
-  }
+   .navbar {
+      justify-content: space-around;
+      padding: 1rem 1rem;
+   }
+   .navbar h2 {
+      font-size: 1.5rem;
+   }
 }
