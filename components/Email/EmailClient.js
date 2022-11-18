@@ -1,8 +1,23 @@
 import EmailStyles from "./EmailStyles";
 
 const EmailClient = (data) => {
-  const { name, email, provider, message, address, dob, policy } =
-    data.emailObj;
+  const {
+    fName,
+    mName,
+    lName,
+    email,
+    provider,
+    message,
+    addressStreet1,
+    addressStreet2,
+    addressCity,
+    addressState,
+    addressPostal,
+    dobMonth,
+    dobDay,
+    dobYear,
+    policy,
+  } = data.emailObj;
   return (
     <body style={EmailStyles.containerStyles}>
       <header>
@@ -11,21 +26,30 @@ const EmailClient = (data) => {
       <main style={EmailStyles.contentStyles}>
         <h1 style={EmailStyles.headerStyles}>Thanks For Choosing Me</h1>
         <p style={EmailStyles.textStyles}>
-          Hello {name} we just received your message! I wanted to thank you for
+          Hello {fName} we just received your message! I wanted to thank you for
           allowing me to serve you. Here is the information that you sent me:
         </p>
         <ul style={EmailStyles.infoStyles}>
           <li>
-            Name: <span style={EmailStyles.infoItemStyles}>{name}</span>
+            Name:{" "}
+            <span style={EmailStyles.infoItemStyles}>{`${fName} ${
+              mName.trim() !== "" ? mName + " " : ""
+            }${lName}`}</span>
           </li>
           <li>
             Email: <span style={EmailStyles.infoItemStyles}>{email}</span>
           </li>
           <li>
-            Address: <span style={EmailStyles.infoItemStyles}>{address}</span>
+            Address:{" "}
+            <span style={EmailStyles.infoItemStyles}>{`${addressStreet1} ${
+              addressStreet2.trim() !== "" ? addressStreet2 + " " : ""
+            }${addressCity}, ${addressState}, ${addressPostal}`}</span>
           </li>
           <li>
-            Date of Birth: <span style={EmailStyles.infoItemStyles}>{dob}</span>
+            Date of Birth:{" "}
+            <span
+              style={EmailStyles.infoItemStyles}
+            >{`${dobMonth}/${dobDay}/${dobYear}`}</span>
           </li>
           <li>
             Provider: <span style={EmailStyles.infoItemStyles}>{provider}</span>
