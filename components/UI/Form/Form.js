@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext } from "react";
 
 import Button from "../Button";
 import useInput from "../../../hooks/useInput";
@@ -68,7 +68,7 @@ const policyOptions = [
   "Property and Damage",
 ];
 
-const isNotEmpty = (value) => value.trim() !== "";
+const isNotEmpty = (value) => String(value).trim() !== "";
 const isString = (value) => {
   if (!isNotEmpty(value)) {
     return false;
@@ -77,9 +77,10 @@ const isString = (value) => {
   const letters = /^[a-zA-Z]+$/;
   return letters.test(value);
 };
+
 const msgLength = (value) => {
   if (value.trim().length < 10) {
-    msgError = "Your message should be at least 10 character's";
+    msgError = "Your message should be at least 10 characters";
     return false;
   } else if (value.trim().length > 250) {
     msgError = "Your message should be less than 250 characters";
@@ -89,13 +90,41 @@ const msgLength = (value) => {
   }
 };
 
+const validMonth = (value) => {
+  if (!isNotEmpty(value) || +value > 12) {
+    return false;
+  }
+
+  const numbers = /^[0-9]+$/;
+  return numbers.test(value);
+};
+
+const validDay = (value) => {
+  if (!isNotEmpty(value) || +value > 31) {
+    return false;
+  }
+
+  const numbers = /^[0-9]+$/;
+  return numbers.test(value);
+};
+
+const validYear = (value) => {
+  const year = new Date().getUTCFullYear();
+  if (!isNotEmpty(value) || +value > year || +value < year - 120) {
+    return false;
+  }
+
+  const numbers = /^[0-9]+$/;
+  return numbers.test(value);
+};
+
 const validPostal = (value) => {
   if (value.trim().length < 5) {
     return false;
   }
 
-  const letters = /^[0-9]+$/;
-  return letters.test(value);
+  const numbers = /^[0-9]+$/;
+  return numbers.test(value);
 };
 
 const validEmail = (value) => {
@@ -172,7 +201,6 @@ const Form = () => {
   const {
     value: enteredAddressState,
     isValid: enteredAddressStateIsValid,
-    hasError: addressStateHasError,
     valueChangeHandler: addressStateChangeHandler,
     reset: resetAddressState,
   } = useInput(() => {
@@ -195,7 +223,7 @@ const Form = () => {
     valueChangeHandler: dobMonthChangeHandler,
     valueBlurHandler: dobMonthBlurHandler,
     reset: resetDOBMonth,
-  } = useInput(isNotEmpty);
+  } = useInput(validMonth);
 
   const {
     value: enteredDOBDay,
@@ -204,7 +232,7 @@ const Form = () => {
     valueChangeHandler: dobDayChangeHandler,
     valueBlurHandler: dobDayBlurHandler,
     reset: resetDOBDay,
-  } = useInput(isNotEmpty);
+  } = useInput(validDay);
 
   const {
     value: enteredDOBYear,
@@ -213,7 +241,7 @@ const Form = () => {
     valueChangeHandler: dobYearChangeHandler,
     valueBlurHandler: dobYearBlurHandler,
     reset: resetDOBYear,
-  } = useInput(isNotEmpty);
+  } = useInput(validYear);
 
   const {
     value: enteredProvider,
@@ -227,7 +255,6 @@ const Form = () => {
   const {
     value: enteredPolicy,
     isValid: enteredPolicyIsValid,
-    hasError: policyHasError,
     valueChangeHandler: policyChangeHandler,
     reset: resetPolicy,
   } = useInput(() => {
@@ -272,25 +299,38 @@ const Form = () => {
 
     formCtx.submittingHandler();
 
-    try {
-      fetch("/api/form-submission", {
-        method: "POST",
-        body: JSON.stringify({
-          name: `${enteredFirstName} ${
-            isNotEmpty(enteredMiddleName) ? enteredMiddleName : ""
-          } ${enteredLastName}`,
-          email: enteredEmail,
-          address: `${enteredAddressStreet1} ${
-            isNotEmpty(enteredAddressStreet2) ? enteredAddressStreet2 : ""
-          } ${enteredAddressCity}, ${
-            enteredAddressState === "" ? "AK" : enteredAddressState
-          }, ${enteredAddressPostal}`,
-          provider: enteredProvider,
-          message: enteredMessage,
-          dob: `${enteredDOBMonth}/${enteredDOBDay}/${enteredDOBYear}`,
-          policy: enteredPolicy === "" ? "Individual" : enteredPolicy,
-        }),
-      }).then(() => {
+    fetch("/api/form-submission", {
+      method: "POST",
+      body: JSON.stringify({
+        fName: capitalize(enteredFirstName),
+        mName: capitalize(enteredMiddleName),
+        lName: capitalize(enteredLastName),
+        email: enteredEmail,
+        addressStreet1: enteredAddressStreet1,
+        addressStreet2: enteredAddressStreet2,
+        addressCity: enteredAddressCity,
+        addressState: enteredAddressState === "" ? "AK" : enteredAddressState,
+        addressPostal: enteredAddressPostal,
+        provider: capitalize(enteredProvider),
+        message: enteredMessage,
+        dobMonth: enteredDOBMonth,
+        dobDay: enteredDOBDay,
+        dobYear: enteredDOBYear,
+        policy: enteredPolicy === "" ? "Individual" : capitalize(enteredPolicy),
+      }),
+    })
+      .then(async (response) => {
+        const json = await response.json();
+        return { res: response, json };
+      })
+      .then((data) => {
+        if (data.res.ok) {
+          return;
+        }
+
+        throw new Error(`${data.json.message}`);
+      })
+      .then(() => {
         formCtx.completionHandler();
 
         resetFirstName();
@@ -308,10 +348,10 @@ const Form = () => {
         resetProvider();
         resetPolicy();
         resetMessage();
+      })
+      .catch((error) => {
+        formCtx.errorHandler(error.message);
       });
-    } catch (error) {
-      console.log(error.message);
-    }
   };
 
   const formContent = (
@@ -393,11 +433,10 @@ const Form = () => {
             <div className={classes["form-item"]}>
               <input
                 id="dob-month"
-                type="number"
-                min="1"
-                max="12"
+                type="text"
+                maxLength="2"
                 name="dob-month"
-                placeholder="1"
+                placeholder="01"
                 value={enteredDOBMonth}
                 onChange={dobMonthChangeHandler}
                 onBlur={dobMonthBlurHandler}
@@ -409,11 +448,10 @@ const Form = () => {
             <div className={classes["form-item"]}>
               <input
                 id="dob-day"
-                type="number"
-                min="1"
-                max="31"
+                type="text"
+                maxLength="2"
                 name="dob-day"
-                placeholder="1"
+                placeholder="01"
                 value={enteredDOBDay}
                 onChange={dobDayChangeHandler}
                 onBlur={dobDayBlurHandler}
@@ -425,11 +463,10 @@ const Form = () => {
             <div className={classes["form-item"]}>
               <input
                 id="dob-year"
-                type="number"
-                min="1900"
-                max="2020"
+                type="text"
+                maxLength="4"
                 name="dob-year"
-                placeholder="2010"
+                placeholder="1990"
                 value={enteredDOBYear}
                 onChange={dobYearChangeHandler}
                 onBlur={dobYearBlurHandler}
@@ -528,9 +565,6 @@ const Form = () => {
         {(addressCityHasError && (
           <p className={classes.errorMessage}>Please enter a valid city</p>
         )) ||
-          (addressStateHasError && (
-            <p className={classes.errorMessage}>Please enter a valid state</p>
-          )) ||
           (addressPostalHasError && (
             <p className={classes.errorMessage}>
               Please enter a valid postal code
@@ -546,7 +580,7 @@ const Form = () => {
               type="text"
               name="provider"
               placeholder="Insurance provider"
-              value={enteredProvider}
+              value={capitalize(enteredProvider)}
               onChange={providerChangeHandler}
               onBlur={providerBlurHandler}
               className={`${providerHasError ? classes.invalid : ""}`}
@@ -571,9 +605,6 @@ const Form = () => {
             </select>
             <label htmlFor="policy">Which of our policies interests you?</label>
           </div>
-          {policyHasError && (
-            <p className={classes.errorMessage}>Please enter a valid policy</p>
-          )}
         </div>
       </div>
       <div className={classes["form-group"]}>
@@ -599,9 +630,11 @@ const Form = () => {
                 {enteredMessage.trim().length}/250
               </div>
             </div>
-
             {messageHasError && (
-              <p className={classes.errorMessage}>{msgError}</p>
+              <p className={classes.errorMessage}>{`${
+                msgError ||
+                "Please write a message between 10 and 250 characters"
+              }`}</p>
             )}
           </div>
         </div>
@@ -626,11 +659,30 @@ const Form = () => {
     </Button>
   );
 
+  const errorContent = (
+    <Fragment>
+      <h3 className={classes.errorHeader}>{`${formCtx.errMsg}`}</h3>
+      <Button type="button" onClick={formCtx.resetForm}>
+        Try again?
+      </Button>
+    </Fragment>
+  );
+
   return (
     <Fragment>
-      {!formCtx.isSubmitting && !formCtx.isComplete && formContent}
-      {formCtx.isSubmitting && !formCtx.isComplete && sendingContent}
-      {!formCtx.isSubmitting && formCtx.isComplete && sentContent}
+      {!formCtx.isSubmitting &&
+        !formCtx.isComplete &&
+        !formCtx.isError &&
+        formContent}
+      {formCtx.isSubmitting &&
+        !formCtx.isComplete &&
+        !formCtx.isError &&
+        sendingContent}
+      {!formCtx.isSubmitting &&
+        formCtx.isComplete &&
+        !formCtx.isError &&
+        sentContent}
+      {formCtx.isError && errorContent}
     </Fragment>
   );
 };

@@ -1,35 +1,58 @@
 import EmailStyles from "./EmailStyles";
 
 const EmailAdmin = (data) => {
-   const { name, email, provider, message, address, dob, policy } =
-      data.emailObj;
+   const {
+      fName,
+      mName,
+      lName,
+      email,
+      provider,
+      message,
+      addressStreet1,
+      addressStreet2,
+      addressCity,
+      addressState,
+      addressPostal,
+      dobMonth,
+      dobDay,
+      dobYear,
+      policy,
+   } = data.emailObj;
    return (
       <body style={EmailStyles.containerStyles}>
          <header>
-            <h1 style={EmailStyles.titleStyles}>Perry Morris Insurance</h1>
+            <h1 style={EmailStyles.titleStyles}>Perry Morris</h1>
          </header>
-         <hr style={EmailStyles.hrStyles} />
          <main style={EmailStyles.contentStyles}>
             <h1 style={EmailStyles.headerStyles}>
-               You have received a new message from {name}
+               You have received a new message from {fName}
             </h1>
             <p style={EmailStyles.textStyles}>
-               Here is the information that {name} sent you:
+               Here is the information that {fName} sent you:
             </p>
             <ul style={EmailStyles.infoStyles}>
                <li>
-                  Name: <span style={EmailStyles.infoItemStyles}>{name}</span>
+                  Name:{" "}
+                  <span style={EmailStyles.infoItemStyles}>{`${fName} ${
+                     mName.trim() !== "" ? mName + " " : ""
+                  }${lName}`}</span>
                </li>
                <li>
                   Email: <span style={EmailStyles.infoItemStyles}>{email}</span>
                </li>
                <li>
                   Address:{" "}
-                  <span style={EmailStyles.infoItemStyles}>{address}</span>
+                  <span
+                     style={EmailStyles.infoItemStyles}
+                  >{`${addressStreet1} ${
+                     addressStreet2.trim() !== "" ? addressStreet2 + " " : ""
+                  }${addressCity}, ${addressState}, ${addressPostal}`}</span>
                </li>
                <li>
                   Date of Birth:{" "}
-                  <span style={EmailStyles.infoItemStyles}>{dob}</span>
+                  <span
+                     style={EmailStyles.infoItemStyles}
+                  >{`${dobMonth}/${dobDay}/${dobYear}`}</span>
                </li>
                <li>
                   Provider:{" "}
@@ -45,7 +68,7 @@ const EmailAdmin = (data) => {
                </li>
             </ul>
             <p style={EmailStyles.textStyles}>
-               An email has been sent to {name}
+               An email has been sent to {fName}
             </p>
          </main>
          <hr style={EmailStyles.hrStyles} />

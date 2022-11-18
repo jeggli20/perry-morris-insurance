@@ -19,12 +19,24 @@ const ContactSection = () => {
 
   const completeContent = <h2>Your form has been sent!</h2>;
 
+  const errorContent = <h2>Something Went Wrong!</h2>;
+
   return (
     <section className={classes.contact} id="contact">
       <div className={classes.form}>
-        {!formCtx.isSubmitting && !formCtx.isComplete && formContent}
-        {formCtx.isSubmitting && !formCtx.isComplete && submittingContent}
-        {!formCtx.isSubmitting && formCtx.isComplete && completeContent}
+        {!formCtx.isSubmitting &&
+          !formCtx.isComplete &&
+          !formCtx.isError &&
+          formContent}
+        {formCtx.isSubmitting &&
+          !formCtx.isComplete &&
+          !formCtx.isError &&
+          submittingContent}
+        {!formCtx.isSubmitting &&
+          formCtx.isComplete &&
+          !formCtx.isError &&
+          completeContent}
+        {formCtx.isError && errorContent}
         <Form />
       </div>
     </section>

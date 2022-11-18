@@ -92,6 +92,11 @@
   font-size: 1.1rem;
 }
 
+.errorHeader {
+  margin-top: 0;
+  color: #5f1a37;
+}
+
 .circle {
   display: inline-block;
   background-color: #3e87d6;
@@ -181,7 +186,8 @@
 
 @media screen and (max-width: 991px) {
   .form input,
-  .form textarea {
+  .form textarea,
+  .form select {
     padding: 12px;
     margin: 10px 0;
   }
