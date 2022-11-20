@@ -16,7 +16,8 @@ const Card = (props) => {
         className={classes.card_img}
         src={props.src}
         alt={props.alt}
-        layout="fill"
+        width={340}
+        height={200}
       />
       <div className={classes.content}>{props.children}</div>
     </div>

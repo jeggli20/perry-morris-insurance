@@ -1,8 +1,8 @@
 import { Fragment, useContext } from "react";
 
-import Button from "./Button";
-import useInput from "../../hooks/useInput";
-import FormContext from "../../context/form-context";
+import Button from "../Button";
+import useInput from "../../../hooks/useInput";
+import FormContext from "../../../context/form-context";
 import classes from "./Form.module.css";
 
 let msgError;
@@ -624,8 +624,7 @@ const Form = () => {
             ></textarea>
             <div className={classes["form-row"]}>
               <label htmlFor="message">
-                Please enter in a brief message
-                (At&nbsp;least&nbsp;10&nbsp;characters)
+                Please enter in a brief message (At least 10 characters)
               </label>
               <div className={classes.counter}>
                 {enteredMessage.trim().length}/250

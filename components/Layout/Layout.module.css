@@ -1,6 +1,8 @@
 .main-container {
   display: flex;
   flex-direction: column;
+  /* top: 0; */
+  width: 100%;
   max-width: 1600px;
   background-color: #fff;
   box-shadow: -10px 5px 100px #000;
@@ -13,9 +15,8 @@
   position: relative;
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 1600px) {
   .main-container {
-    max-width: 575px;
     box-shadow: none;
   }
 }

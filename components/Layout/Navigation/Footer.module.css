@@ -1,131 +1,99 @@
 .footer {
-  flex: 0 0;
-  display: flex;
-  padding: 2rem;
-  flex-direction: column;
-  justify-content: space-evenly;
-  border-top: 1px solid #28363a; /* Border Line*/
-  background-image: linear-gradient(to right, #4163e0, #3e87d6);
+   flex: 0 0;
+   display: flex;
+   padding: 2rem;
+   flex-direction: column;
+   justify-content: space-evenly;
+   border-top: 1px solid #28363a; /* Border Line*/
+   background-image: linear-gradient(to right, #4163e0, #3e87d6);
 }
 
 .footNav {
-  display: block;
-  margin: auto;
-  padding: 2rem;
+   display: block;
+   margin: auto;
+   padding: 2rem;
 }
-
 .info {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
 }
 
 .info p {
-  color: #fff; /* Text */
+   color: #fff; /* Text */
 }
 
 .phone,
 .email,
 .nav {
-  /* Color */
-  --c: rgb(6, 6, 6);
-  /* Height */
-  --h: 1.2em;
-  text-decoration: none;
-  margin: 10px 0 0 25px;
-  font-size: 1.5rem;
-  /* First effect */
-  line-height: var(--h) #fff;
-  color: #fff;
-  overflow: hidden;
-  text-shadow: 0 calc(-1 * var(--h) * var(--_i, 0)) var(--c) 0
-    calc(var(--h) * (1 - var(--_i, 0))) #fff;
-  /* Second effect */
-  background: linear-gradient(#5f1a37 0 0) no-repeat
-    calc(200% - var(--_i, 0) * 100%) 100% / 200%
-    calc(100% * var(--_i, 0) + 0.08em);
-  transition: 0.2s calc(var(--_i, 0) * 0.2s),
-    background-position 0.8s calc(0.2s - calc(var(--_i, 0) * 0.2s));
+   /* Color */
+   --c: rgb(6, 6, 6);
+   /* Height */
+   --h: 1.2em;
+   text-decoration: none;
+   margin: 10px 0 0 25px;
+   font-size: 1.5rem;
+   /* First effect */
+   line-height: var(--h) #fff;
+   color: #fff;
+   overflow: hidden;
+   text-shadow: 0 calc(-1 * var(--h) * var(--_i, 0)) var(--c) 0
+      calc(var(--h) * (1 - var(--_i, 0))) #fff;
+   /* Second effect */
+   background: linear-gradient(#5f1a37 0 0) no-repeat
+      calc(200% - var(--_i, 0) * 100%) 100% / 200%
+      calc(100% * var(--_i, 0) + 0.08em);
+   transition: 0.2s calc(var(--_i, 0) * 0.2s),
+      background-position 0.8s calc(0.2s - calc(var(--_i, 0) * 0.2s));
 }
 
 .email:hover,
 .email:active,
 .phone:hover,
 .phone:active {
-  color: #fff;
-  /* text-shadow: 0 -1.2em #fff, 0 0 var(--c); */
-  border-radius: 10px;
-  --_i: 1;
-  padding: 0.2vh;
+   color: #fff;
+   /* text-shadow: 0 -1.2em #fff, 0 0 var(--c); */
+   border-radius: 10px;
+   --_i: 1;
+   padding: 0.2vh;
 }
 
 .i-email,
 .i-phone {
-  width: 15px;
+   width: 15px;
 }
 
 .contact {
-  display: flex;
-  flex-direction: column;
+   display: flex;
+   flex-direction: column;
 }
 
 .email {
-  padding: 0px 10 0px 15px;
+   padding: 0px 10 0px 15px;
 }
 
 .phone {
-  padding: 0px 15px 0px 15px;
+   padding: 0px 15px 0px 15px;
 }
 
-@media screen and (max-width: 787px) {
-  .footer {
-    padding: 1rem;
-  }
-
-  .contact {
-    margin-left: 0.8rem;
-  }
-
-  .phone,
-  .email {
-    padding: 0;
-    margin: 0;
-  }
-
-  .phone,
-  .email,
-  .nav {
-    font-size: 0.8rem;
-  }
-
-  .info {
-    flex-direction: column;
-  }
+@media screen and (max-width: 991px) {
+   .footer {
+      padding: 6rem;
+   }
 }
 
-@media screen and (max-width: 575px) {
-  .footer {
-    padding: 1rem;
-  }
+@media screen and (max-width: 768px) {
+   .footer {
+      padding: 5rem 2rem;
+      flex-direction: column;
+      justify-content: center;
+   }
+}
 
-  .contact {
-    margin-left: 0.8rem;
-  }
-
-  .phone,
-  .email {
-    padding: 0;
-    margin: 0;
-  }
-
-  .phone,
-  .email,
-  .nav {
-    font-size: 0.8rem;
-  }
-
-  .info {
-    flex-direction: column;
-  }
+@media screen and (max-width: 496px) {
+   .footer {
+      padding: 5rem 2rem;
+      flex-direction: column;
+      justify-content: flex-start;
+   }
 }

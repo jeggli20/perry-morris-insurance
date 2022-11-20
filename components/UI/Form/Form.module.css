@@ -1,11 +1,9 @@
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 38rem;
-  padding: 2rem;
-  margin: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .form-group {
@@ -40,7 +38,7 @@
 }
 
 .form label {
-  color: #3e87d6;
+  color: #929292;
 }
 
 .form input,
@@ -56,8 +54,6 @@
   border-radius: 15px;
   outline: none;
   margin: 13px 0 0 0;
-  -webkit-appearance: none;
-  -webkit-border-radius: none;
 }
 
 .form input:focus,
@@ -82,7 +78,7 @@
 .counter {
   flex-basis: 10%;
   text-align: end;
-  color: #3e87d6;
+  color: #929292;
 }
 
 .invalid {
@@ -188,33 +184,19 @@
   }
 }
 
-@media screen and (max-width: 575px) {
-  .form {
-    padding: 2rem 0;
+@media screen and (max-width: 991px) {
+  .form input,
+  .form textarea,
+  .form select {
+    padding: 12px;
+    margin: 10px 0;
   }
 
-  .form-row {
-    flex-direction: column;
+  .form input::placeholder {
+    font-size: 1rem;
   }
 
-  .form-row span {
-    display: none;
-  }
-
-  .form-item {
-    width: 100%;
-    margin: 0;
-  }
-
-  .counter {
-    margin: 0.8rem 0 0.5rem 0;
-  }
-
-  .loader {
-    text-align: center;
-  }
-
-  .errorHeader {
-    text-align: center;
+  .form textarea {
+    font-size: 1rem;
   }
 }
