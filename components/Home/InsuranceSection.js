@@ -9,7 +9,7 @@ const InsuranceSection = (props) => {
       <h2 data-aos="fade-up" onClick={props.onShowModal}>
         The coverage we provide.
       </h2>
-      <div className={classes.boxMenu} data-aos="fade-up">
+      <div className={classes.cards} data-aos="fade-up">
         <Card
           className="card_ind"
           src={pic}

@@ -26,7 +26,7 @@ const Header = () => {
           className={classes.logo}
           src={logo}
           alt="Perry Morris Logo"
-          width={450}
+          layout="fill"
           priority
         />
       </Link>
@@ -34,7 +34,7 @@ const Header = () => {
       <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
         <FontAwesomeIcon
           icon={faYoutube}
-          className={`icon ${classes.icons}`}
+          className={`icon ${classes.youtube}`}
           aria-hidden="true"
         />
       </a>

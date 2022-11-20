@@ -1,57 +1,52 @@
 .contact {
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  align-items: center;
   min-height: 300px;
 }
 
-.form {
-  /* flex-basis: 50%; */
+.form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 50px;
+  max-width: 38rem;
+  padding: 2rem;
+  margin: auto;
 }
 
-.form h2 {
+.form-container h2 {
   font-size: 2rem;
   color: #5f1a37; /* Heading */
   padding: 30px 0 10px 0;
   width: 100%;
 }
 
-@media screen and (max-width: 991px) {
-  .contact {
-    padding: 6rem;
-  }
-
-  .form h2 {
-    font-size: 2rem;
-    padding-bottom: 7px;
+@media screen and (max-width: 787px) {
+  .form-container h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 2rem 0 0 0;
+    padding: 0;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .contact {
-    padding: 5rem 2rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .contact .form {
-    width: 70%;
+@media screen and (max-width: 575px) {
+  .form-container {
+    min-width: 225px;
+    max-width: 275px;
+    padding: 1rem;
   }
 
-  .contact .form h2 {
-    font-size: 2.5rem;
+  .form-container h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 2rem 0 0 0;
+    padding: 0;
   }
 }
 
-@media screen and (max-width: 496px) {
-  .contact {
-    padding: 4rem 1rem;
-  }
-  .contact .form {
-    width: 100%;
+@media screen and (max-width: 575px) {
+  .form-container {
+    padding: 1.5rem;
   }
 }
