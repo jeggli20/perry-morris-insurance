@@ -6,6 +6,10 @@
   color: #5f1a37;
 }
 
+.container hr {
+  display: none;
+}
+
 .biography {
   flex-basis: 50%;
   display: flex;
@@ -43,4 +47,44 @@
 
 .profile p {
   font-size: 1.5rem;
+}
+
+@media screen and (max-width: 575px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+
+  .container hr {
+    display: block;
+    border: double 5px #5f1a37;
+    width: 100vw;
+  }
+
+  .profile {
+    padding: 1.5rem;
+  }
+
+  .profile-img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .profile h2,
+  .profile p {
+    text-align: center;
+  }
+
+  .profile p {
+    font-size: 1.25rem;
+  }
+
+  .biography {
+    box-sizing: border-box;
+    width: 100vw;
+    padding: 1.5rem;
+  }
+
+  .biography h4 {
+    margin: 0;
+  }
 }

@@ -123,13 +123,20 @@
 
 @media screen and (max-width: 575px) {
   .section-content {
-    top: 50%;
-    left: 70%;
+    top: 5%;
+    left: 25%;
+    width: 65vw;
   }
 
   .image {
     width: 240%;
-    left: -200px;
+    left: -280px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .image {
+    width: 300%;
   }
 }
 
@@ -139,10 +146,19 @@
   }
 
   .section-content {
-    left: 60%;
+    top: 10%;
+    left: 25%;
+  }
+
+  .section-content p {
+    display: none;
+  }
+
+  .section-content h2 {
+    font-size: 2rem;
   }
 
   .image {
-    width: 280%;
+    left: -250px;
   }
 }

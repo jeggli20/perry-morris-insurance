@@ -23,6 +23,7 @@ const AboutContent = () => {
           accountability. Thank you.
         </p>
       </div>
+      <hr />
       <div className={classes.profile} data-aos="fade-up">
         <Image
           className={classes["profile-img"]}
