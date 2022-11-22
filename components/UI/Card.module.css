@@ -14,8 +14,9 @@
   border-radius: 15px;
   transition: transform 0.2s; /* animation */
 }
+
 .card:hover {
-  transform: scale(1.12); /* hover animation */
+  transform: scale(1.05); /* hover animation */
 }
 .content {
   display: flex;
@@ -45,6 +46,12 @@
   color: #fff !important; /* Sub-Header*/
   font-size: 1.1rem;
   overflow: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .card:hover {
+    transform: none;
+  }
 }
 
 @media screen and (max-width: 575px) {

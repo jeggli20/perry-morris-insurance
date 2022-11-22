@@ -147,31 +147,6 @@
   animation-iteration-count: infinite;
   -webkit-animation-iteration-count: infinite;
 }
-.subBtn {
-  --c: rgb(6, 6, 6);
-  margin: 5px 5px 5px 5px;
-  text-decoration: none;
-  font-size: 1.3rem;
-  color: #5f1a37; /* BTN*/
-  text-transform: uppercase;
-  border: 1.5px solid var(--c); /* BTN */
-  border-radius: 15px;
-  padding: 0.9rem 1.6rem;
-  background: linear-gradient(#5f1a37 0 0) no-repeat
-    calc(200% - var(--i, 0) * 100%) 100% / 200%
-    calc(100% * var(--i, 0) + 0.08em);
-  transition: 0.2s calc(var(--i, 0) * 0.2s),
-    background-position 0.2s calc(0.2s - calc(var(--i, 0) * 0.2s));
-}
-.subBtn:focus,
-.subBtn:hover,
-.subBtn:active {
-  color: #fff; /* BTN*/
-  border: 3px solid var(--c);
-  cursor: pointer;
-  --i: 1;
-  cursor: pointer;
-}
 
 @keyframes bounce {
   0% {

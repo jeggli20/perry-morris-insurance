@@ -603,7 +603,7 @@ const Form = () => {
                 </option>
               ))}
             </select>
-            <label htmlFor="policy">Which of our policies interests you?</label>
+            <label htmlFor="policy">Which policy interests you?</label>
           </div>
         </div>
       </div>
