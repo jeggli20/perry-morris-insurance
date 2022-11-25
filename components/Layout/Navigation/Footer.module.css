@@ -1,17 +1,15 @@
 .footer {
   display: flex;
   padding: 2rem;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: space-evenly;
   background-image: linear-gradient(to right, #4163e0, #3e87d6);
 }
 
-.footNav {
+.footer ul {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: auto;
-  padding: 2rem;
 }
 
 .info {
@@ -25,12 +23,18 @@
   color: #fff; /* Text */
 }
 
+.primary {
+  display: flex;
+  flex-direction: row;
+}
+
 .phone,
 .email,
 .nav {
   text-decoration: none;
-  margin: 10px 0 0 25px;
+  text-align: center;
   font-size: 1.5rem;
+  margin: 0 0.5rem;
   color: #fff;
 }
 
@@ -48,21 +52,46 @@
 
 .contact {
   display: flex;
-  flex-direction: row;
-  margin: 0 5rem 2rem 3.5rem;
+  flex-direction: column;
+  margin: 1rem;
 }
 
 .email {
   padding: 0px 10 0px 15px;
 }
 
+.phones {
+  display: flex;
+  flex-direction: row;
+}
+
 .phone {
   padding: 0px 15px 0px 15px;
 }
 
+.social {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2rem 0 0 0;
+}
+
+@media screen and (max-width: 1199px) {
+  .footer ul {
+    padding: 1rem;
+  }
+
+  .primary {
+    flex-direction: column;
+  }
+
+  .email {
+    margin: 1.5rem;
+  }
+}
+
 @media screen and (max-width: 767px) {
-  .footer {
-    /* padding: 1rem; */
+  .footer ul {
+    display: none;
   }
 
   .contact {
@@ -74,7 +103,6 @@
   .email {
     text-align: center;
     padding: 0;
-    margin: 0.5rem 0;
   }
 
   .phone,
@@ -83,29 +111,3 @@
     font-size: 0.8rem;
   }
 }
-
-/* @media screen and (max-width: 575px) {
-  .footer {
-    padding: 1rem;
-  }
-
-  .contact {
-    margin-left: 0.8rem;
-  }
-
-  .phone,
-  .email {
-    padding: 0;
-    margin: 0;
-  }
-
-  .phone,
-  .email,
-  .nav {
-    font-size: 0.8rem;
-  }
-
-  .info {
-    flex-direction: column;
-  }
-} */

@@ -11,6 +11,10 @@
   left: 40%;
   text-align: center;
   width: 700px;
+  padding: 1.5rem 1rem;
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px #111;
+  background-color: rgba(95, 26, 55, 0.85);
 }
 
 .section-content p {
@@ -27,7 +31,7 @@
 .emphasis {
   font-size: 1.2em;
   text-decoration: underline;
-  text-shadow: 2px 2px #5f1a37;
+  text-shadow: 4px 2px #262626;
 }
 
 .section-content Button {

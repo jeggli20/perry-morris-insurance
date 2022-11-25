@@ -15,7 +15,7 @@ const ContactSection = () => {
   );
 
   const submittingContent = (
-    <h2>Please wait patiently while we submit your form</h2>
+    <h2>Please wait patiently while we submit&nbsp;your&nbsp;form</h2>
   );
 
   const completeContent = <h2>Your form has&nbsp;been&nbsp;sent!</h2>;
