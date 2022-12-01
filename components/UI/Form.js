@@ -415,7 +415,7 @@ const Form = () => {
               id="email"
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="johnsmith90@gmail.com"
               value={enteredEmail}
               onChange={emailChangeHandler}
               onBlur={emailBlurHandler}
@@ -430,7 +430,9 @@ const Form = () => {
         <div className={classes["form-group"]}>
           <h3 className={classes["form-header"]}>Date of Birth</h3>
           <div className={classes["form-row"]}>
-            <div className={classes["form-item"]}>
+            <div
+              className={`${classes["form-item"]} ${classes["form-day-month"]}`}
+            >
               <input
                 id="dob-month"
                 type="text"
@@ -445,7 +447,9 @@ const Form = () => {
               <label htmlFor="dob-month">Month</label>
             </div>
             <span>/</span>
-            <div className={classes["form-item"]}>
+            <div
+              className={`${classes["form-item"]} ${classes["form-day-month"]}`}
+            >
               <input
                 id="dob-day"
                 type="text"
@@ -460,7 +464,7 @@ const Form = () => {
               <label htmlFor="dob-day">Day</label>
             </div>
             <span>/</span>
-            <div className={classes["form-item"]}>
+            <div className={`${classes["form-item"]} ${classes["form-year"]}`}>
               <input
                 id="dob-year"
                 type="text"

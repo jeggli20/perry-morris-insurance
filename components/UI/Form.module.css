@@ -39,6 +39,14 @@
   flex-basis: 100%;
 }
 
+.form-day-month {
+  min-width: 47px !important;
+}
+
+.form-year {
+  min-width: 70px !important;
+}
+
 .form label {
   color: #3e87d6;
 }

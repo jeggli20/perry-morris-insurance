@@ -30,6 +30,7 @@
 
 .phone,
 .email,
+.social-icon,
 .nav {
   text-decoration: none;
   text-align: center;
@@ -42,12 +43,7 @@
 .email:active,
 .phone:hover,
 .phone:active {
-  color: #5f1a37;
-}
-
-.i-email,
-.i-phone {
-  width: 15px;
+  text-decoration: underline;
 }
 
 .contact {
@@ -71,8 +67,12 @@
 
 .social {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: 2rem 0 0 0;
+}
+
+.social-icon {
+  margin: 0 1rem;
 }
 
 @media screen and (max-width: 1199px) {
@@ -109,5 +109,11 @@
   .email,
   .nav {
     font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .phones {
+    flex-direction: column;
   }
 }

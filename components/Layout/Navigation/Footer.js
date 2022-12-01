@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
           <div className={classes.social}>
             <a
-              className={classes.phone}
+              className={classes["social-icon"]}
               href="https://www.facebook.com/"
               target="_blank"
               rel="noreferrer"
@@ -59,7 +59,7 @@ const Footer = () => {
               />
             </a>
             <a
-              className={classes.phone}
+              className={classes["social-icon"]}
               href="https://www.linkedin.com/"
               target="_blank"
               rel="noreferrer"

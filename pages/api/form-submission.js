@@ -10,6 +10,7 @@ import EmailClient from "../../components/Email/EmailClient";
 const service = process.env.EMAIL_SERVICE;
 const user = process.env.EMAIL_USER;
 const pass = process.env.EMAIL_PASSWORD;
+const from = process.env.EMAIL_FROM;
 
 const transport = {
   service,
@@ -23,10 +24,14 @@ let errField;
 let msgError;
 
 const emailAwait = async (emails) => {
-  const transporter = createTransport(transport);
-  await transporter.sendMail(emails[0]);
-  await transporter.sendMail(emails[1]);
-  return;
+  try {
+    const transporter = createTransport(transport);
+    await transporter.sendMail(emails[0]);
+    await transporter.sendMail(emails[1]);
+    return;
+  } catch (err) {
+    console.log("The error is here!", err);
+  }
 };
 
 const isNotEmpty = (value) => String(value).trim() !== "";
@@ -143,7 +148,7 @@ const handler = async (req, res) => {
 
       const adminEmail = renderToString(<EmailAdmin emailObj={dataObj} />);
       const adminOptions = {
-        from: process.env.EMAIL_USER,
+        from,
         to: process.env.EMAIL_USER,
         subject: "Perry Morris Insurance: New Message Received",
         text: "Email text",
@@ -152,7 +157,7 @@ const handler = async (req, res) => {
 
       const clientEmail = renderToString(<EmailClient emailObj={dataObj} />);
       const clientOptions = {
-        from: process.env.EMAIL_USER,
+        from,
         to: dataObj.email,
         subject: "We Have Received Your Information!",
         text: "Email text",

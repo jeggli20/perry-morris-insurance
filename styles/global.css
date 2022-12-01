@@ -40,4 +40,8 @@ button {
   section {
     scroll-margin-top: 45px;
   }
+
+  .icon {
+    width: 15px;
+  }
 }

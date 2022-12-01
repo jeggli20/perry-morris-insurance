@@ -1,5 +1,12 @@
 import { createContext, useState } from "react";
 
+import family from "../img/family.jpg";
+import individual from "../img/individual.jpg";
+import smBus from "../img/small_business.jpg";
+import retired from "../img/retired.jpg";
+import property from "../img/property.jpg";
+import profile from "../img/profile.jpg";
+
 const modalDescriptions = [
   "We make it simple to get individual plans to best suit your needs. Whether you're 26, getting insurance for the first time, or you have recently had a life changing event. We want to help.",
   "Family is important to us. We can help you with finding the perfect coverage for the whole family to help give you peace of mind.",
@@ -15,12 +22,16 @@ const ModalContext = createContext({
   showModal: () => {},
   description: "",
   title: "",
+  image: "",
+  alt: "",
 });
 
 export const ModalContextProvider = (props) => {
   const [isShown, setIsShown] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalDescription, setModalDescription] = useState("");
+  const [modalImage, setModalImage] = useState("");
+  const [imgAlt, setImgAlt] = useState("");
 
   const hideModalHandler = () => {
     setIsShown(false);
@@ -32,21 +43,33 @@ export const ModalContextProvider = (props) => {
     if (eventCurrentTarget.contains("card_ind")) {
       setModalTitle("Individuals");
       setModalDescription(modalDescriptions[0]);
+      setModalImage(individual);
+      setImgAlt("Individual");
     } else if (eventCurrentTarget.contains("card_fam")) {
       setModalTitle("Families");
       setModalDescription(modalDescriptions[1]);
+      setModalImage(family);
+      setImgAlt("Family");
     } else if (eventCurrentTarget.contains("card_smb")) {
       setModalTitle("Small Businesses");
       setModalDescription(modalDescriptions[2]);
+      setModalImage(smBus);
+      setImgAlt("Small Business");
     } else if (eventCurrentTarget.contains("card_ret")) {
       setModalTitle("Retired");
       setModalDescription(modalDescriptions[3]);
+      setModalImage(retired);
+      setImgAlt("Retired");
     } else if (eventCurrentTarget.contains("card_propDmg")) {
       setModalTitle("Property and Damage");
       setModalDescription(modalDescriptions[4]);
+      setModalImage(property);
+      setImgAlt("Property");
     } else {
       setModalTitle("Why Perry?");
       setModalDescription(modalDescriptions[5]);
+      setModalImage(profile);
+      setImgAlt("Perry Morris");
     }
 
     setIsShown(true);
@@ -60,6 +83,8 @@ export const ModalContextProvider = (props) => {
         showModal: showModalHandler,
         description: modalDescription,
         title: modalTitle,
+        image: modalImage,
+        alt: imgAlt,
       }}
     >
       {props.children}

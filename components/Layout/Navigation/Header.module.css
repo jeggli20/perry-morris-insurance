@@ -21,11 +21,6 @@
   color: #fff;
 }
 
-.youtube:hover,
-.youtube:active {
-  color: #5f1a37;
-}
-
 .logo {
   object-fit: contain;
   width: 100% !important;

@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,18 +10,14 @@ const Backdrop = (props) => {
 };
 
 const ModalOverlay = (props) => {
-  return (
-    <div className={classes.modal}>
-      <div className={classes.content}>{props.children}</div>
-    </div>
-  );
+  return <div className={classes.modal}>{props.children}</div>;
 };
 
 const Modal = (props) => {
   return (
     <Fragment>
       <Backdrop onClose={props.onCloseModal} />
-      <ModalOverlay className={classes.container}>
+      <ModalOverlay>
         <div className={classes.header}>
           <h3>{props.title}</h3>
           <FontAwesomeIcon
@@ -29,7 +26,19 @@ const Modal = (props) => {
             onClick={props.onCloseModal}
           />
         </div>
-        <p>{props.description}</p>
+        <div className={classes.content}>
+          <div className={classes["image-container"]}>
+            <Image
+              src={props.image}
+              alt={props.alt}
+              layout="fill"
+              className={classes.image}
+            />
+          </div>
+          <div className={classes.description}>
+            <p>{props.description}</p>
+          </div>
+        </div>
       </ModalOverlay>
     </Fragment>
   );
