@@ -46,12 +46,14 @@ const Layout = (props) => {
         />
       )}
       <a className={classes["bar-container"]}>
-        <FontAwesomeIcon
-          icon={navDisplay ? faXmark : faBars}
-          className={`icon ${classes.bar}`}
-          aria-hidden="true"
-          onClick={barEventHandler}
-        />
+        <span>
+          <FontAwesomeIcon
+            icon={navDisplay ? faXmark : faBars}
+            className={`icon ${classes.bar}`}
+            aria-hidden="true"
+            onClick={barEventHandler}
+          />
+        </span>
       </a>
       <Navigation
         className={`${classes["side-nav"]} ${classes[`${navClass}`]}`}
