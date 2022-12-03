@@ -45,16 +45,12 @@ const Layout = (props) => {
           alt={modalCtx.alt}
         />
       )}
-      <a className={classes["bar-container"]}>
-        <span>
-          <FontAwesomeIcon
-            icon={navDisplay ? faXmark : faBars}
-            className={`icon ${classes.bar}`}
-            aria-hidden="true"
-            onClick={barEventHandler}
-          />
-        </span>
-      </a>
+      <FontAwesomeIcon
+        icon={navDisplay ? faXmark : faBars}
+        className={`icon ${classes.bar}`}
+        aria-hidden="true"
+        onClick={barEventHandler}
+      />
       <Navigation
         className={`${classes["side-nav"]} ${classes[`${navClass}`]}`}
       />
