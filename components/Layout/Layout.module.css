@@ -92,7 +92,6 @@
     height: 40px;
     color: #fff;
     background-color: hsl(335, 57%, 24%);
-    box-shadow: 0 0 10px 2px #fff;
     padding: 0.5rem 1rem;
     margin: 1rem;
     border-radius: 50%;
@@ -102,8 +101,7 @@
 
   .bar:hover {
     cursor: pointer;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px 4px #fff;
+    transform: scale(1.1);
     background-color: hsl(335, 57%, 40%);
   }
 }
