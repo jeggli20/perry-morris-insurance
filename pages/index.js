@@ -29,6 +29,7 @@ const HomePage = (props) => {
           content="Perry Morris, insurance, agent, agency, policy, individuals, families, retired, small, business, property, damage"
         />
         <title>Perry Morris</title>
+        <link rel="shortcut icon" href="/favicon.png/" />
       </Head>
       <IntroSection />
       <InsuranceSection onShowModal={props.onShowModal} />

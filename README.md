@@ -32,3 +32,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Environment Variables
+
+You need to set up the following environment variables to get the email to actually work:
+
+- EMAIL_USER - This is the username of the email account you want to send emails from
+- EMAIL_PASSWORD - This is the password of the email account you want to send emails from
+- EMAIL_FROM - This will be the email displayed on the email that you are sending in case you have an email alias (If this is the same as your EMAIL_USER you can omit this variable)
+- EMAIL_SERVICE - This is the email provider you go through for the email account you want to send from

@@ -45,7 +45,7 @@ const Layout = (props) => {
           alt={modalCtx.alt}
         />
       )}
-      <a>
+      <a className={classes["bar-container"]}>
         <FontAwesomeIcon
           icon={navDisplay ? faXmark : faBars}
           className={`icon ${classes.bar}`}

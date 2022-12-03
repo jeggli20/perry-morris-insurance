@@ -10,7 +10,7 @@ import EmailClient from "../../components/Email/EmailClient";
 const service = process.env.EMAIL_SERVICE;
 const user = process.env.EMAIL_USER;
 const pass = process.env.EMAIL_PASSWORD;
-const from = process.env.EMAIL_FROM;
+const from = process.env.EMAIL_FROM || process.env.EMAIL_USER;
 
 const transport = {
   service,
