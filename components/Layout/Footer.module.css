@@ -1,9 +1,9 @@
 .footer {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
   justify-content: space-evenly;
   background-image: linear-gradient(to right, #4163e0, #3e87d6);
+  padding: 2rem;
 }
 
 .footer ul {
@@ -20,7 +20,7 @@
 }
 
 .content p {
-  color: #fff; /* Text */
+  color: #fff;
 }
 
 .primary {

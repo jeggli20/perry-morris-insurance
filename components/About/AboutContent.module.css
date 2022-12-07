@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   color: #5f1a37;
+  min-height: 75vh;
 }
 
 .container hr {
