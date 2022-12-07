@@ -20,7 +20,7 @@ const ContactSection = () => {
 
   const completeContent = <h2>Your form has&nbsp;been&nbsp;sent!</h2>;
 
-  const errorContent = <h2>Something&nbsp;Went&nbsp;Wrong!</h2>;
+  const errorContent = <h2>Something Went Wrong!</h2>;
 
   return (
     <section className={classes.contact} id="contact">

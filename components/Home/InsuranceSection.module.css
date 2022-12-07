@@ -6,23 +6,19 @@
   padding: 5rem 5rem;
 }
 
-.card {
-  margin: 0 10px;
+.container h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #5f1a37;
+  text-align: center;
+  padding-bottom: 50px;
 }
 
 .container p {
   font-size: 1.3rem;
-  color: #5f1a37; /* Small Text */
+  color: #5f1a37;
   text-align: center;
   margin: 0;
-}
-
-.container h2 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #5f1a37; /* Header */
-  text-align: center;
-  padding-bottom: 50px;
 }
 
 .cards {
@@ -53,6 +49,5 @@
 
   .cards {
     flex-direction: column;
-    justify-content: center;
   }
 }

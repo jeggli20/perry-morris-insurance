@@ -12,21 +12,14 @@
 
 .nav li a {
   text-decoration: none;
-  color: #fff; /* Nav text Colors*/
+  color: #fff;
   text-transform: uppercase;
   font-size: 1.2rem;
   font-weight: bolder;
 }
 
-.nav li a:hover,
-.nav i:hover {
+.nav li a:hover {
   cursor: pointer;
-}
-
-.nav i {
-  padding-right: 30px;
-  color: #04030f; /*Phone Nav Color Background */
-  font-weight: bolder;
 }
 
 @media screen and (max-width: 991px) {

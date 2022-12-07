@@ -16,8 +16,8 @@
 
 .form-container h2 {
   font-size: 2rem;
-  color: #5f1a37; /* Heading */
-  padding: 30px 0 10px 0;
+  color: #5f1a37;
+  margin: 2rem 0 0 0;
   width: 100%;
   text-align: center;
 }
@@ -25,9 +25,6 @@
 @media screen and (max-width: 767px) {
   .form-container h2 {
     font-size: 1.5rem;
-    text-align: center;
-    margin: 2rem 0 0 0;
-    padding: 0;
   }
 }
 
@@ -35,19 +32,5 @@
   .form-container {
     min-width: 225px;
     max-width: 275px;
-    padding: 1rem;
-  }
-
-  .form-container h2 {
-    font-size: 1.5rem;
-    text-align: center;
-    margin: 2rem 0 0 0;
-    padding: 0;
-  }
-}
-
-@media screen and (max-width: 575px) {
-  .form-container {
-    padding: 1.5rem;
   }
 }

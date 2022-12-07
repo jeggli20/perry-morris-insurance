@@ -1,7 +1,7 @@
 .footer {
   display: flex;
-  padding: 2rem;
   flex-direction: column;
+  padding: 2rem;
   justify-content: space-evenly;
   background-image: linear-gradient(to right, #4163e0, #3e87d6);
 }
@@ -12,14 +12,14 @@
   justify-content: center;
 }
 
-.info {
+.content {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.info p {
+.content p {
   color: #fff; /* Text */
 }
 

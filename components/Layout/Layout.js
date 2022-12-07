@@ -1,12 +1,12 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import ModalContext from "../../context/modal-context";
-import Header from "./Navigation/Header";
-import Footer from "./Navigation/Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 import Modal from "../UI/Modal";
-import Navigation from "./Navigation/Navigation";
+import Navigation from "./Navigation";
 import classes from "./Layout.module.css";
 
 const Layout = (props) => {
@@ -31,8 +31,6 @@ const Layout = (props) => {
   } else {
     navClass = "";
   }
-
-  console.log(navClass);
 
   return (
     <div className={classes["main-container"]}>

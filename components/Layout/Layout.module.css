@@ -63,7 +63,7 @@
 
   to {
     opacity: 1;
-    z-index: 1000;
+    z-index: 40;
     left: 0;
   }
 }
@@ -71,7 +71,7 @@
 @keyframes hide {
   from {
     opacity: 1;
-    z-index: 1000;
+    z-index: 40;
     left: 0;
   }
 
@@ -87,11 +87,12 @@
     cursor: pointer;
     display: inline;
     position: fixed;
-    z-index: 1001;
+    z-index: 50;
     width: 20px;
     height: 40px;
     color: #fff;
     background-color: hsl(335, 57%, 24%);
+    border: 1px solid #fff;
     padding: 0.5rem 1rem;
     margin: 1rem;
     border-radius: 50%;

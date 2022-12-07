@@ -7,7 +7,7 @@ const AboutContent = () => {
   return (
     <div className={classes.container}>
       <div className={classes.biography}>
-        <h4 data-aos="fade-up">Hello, My Name is Perry Morris</h4>
+        <h4 data-aos="fade-up">Hello, My Name is Perry&nbsp;Morris</h4>
         <p data-aos="fade-up">
           I was born in California but later moved to Washington state. While
           going through school participated in band, choir, Future Farmers of

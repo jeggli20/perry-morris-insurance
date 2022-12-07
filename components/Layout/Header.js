@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import logo from "../../../img/logo.PNG";
+import logo from "../../img/logo.PNG";
 
 import Navigation from "./Navigation";
 import classes from "./Header.module.css";

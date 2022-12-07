@@ -18,7 +18,7 @@ const IntroSection = () => {
         priority
         className={classes.image}
       />
-      <div className={classes["section-content"]}>
+      <div className={classes.content}>
         <p>Our number one priority is you!</p>
         <h2>
           <span className={classes.emphasis}>Insurance</span> to make you feel

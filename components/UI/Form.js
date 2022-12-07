@@ -5,6 +5,7 @@ import useInput from "../../hooks/useInput";
 import FormContext from "../../context/form-context";
 import classes from "./Form.module.css";
 
+// Variables
 let msgError;
 
 const stateOptions = [
@@ -68,7 +69,10 @@ const policyOptions = [
   "Property and Damage",
 ];
 
+// Functions
+// Validation Functions
 const isNotEmpty = (value) => String(value).trim() !== "";
+
 const isString = (value) => {
   if (!isNotEmpty(value)) {
     return false;
@@ -312,7 +316,7 @@ const Form = () => {
         addressState: enteredAddressState === "" ? "AK" : enteredAddressState,
         addressPostal: enteredAddressPostal,
         provider: capitalize(enteredProvider),
-        message: enteredMessage,
+        message: "",
         dobMonth: enteredDOBMonth,
         dobDay: enteredDOBDay,
         dobYear: enteredDOBYear,

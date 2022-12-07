@@ -6,12 +6,15 @@ import Navigation from "./Navigation";
 import classes from "./Footer.module.css";
 
 const Footer = () => {
+  const year = new Date().getUTCFullYear();
+
   return (
     <footer className={classes.footer}>
       <Navigation />
-      <div className={classes.info}>
+      <div className={classes.content}>
         <p>
-          Copyright ©<br />
+          &copy; {`${year} Perry Morris Insurance`}
+          <br />
         </p>
         <div className={classes.contact}>
           <div className={classes.primary}>

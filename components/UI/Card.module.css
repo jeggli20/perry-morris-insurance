@@ -1,8 +1,5 @@
 .card {
-  /* display: absolute; */
-  /* min-width: 340px; */
   max-width: 340px;
-  /* min-height: 390px; */
   max-height: 420px;
   box-sizing: border-box;
   background-color: #4163e0;
@@ -12,12 +9,13 @@
   cursor: pointer;
   margin: 10px;
   border-radius: 15px;
-  transition: transform 0.2s; /* animation */
+  transition: transform 0.2s;
 }
 
 .card:hover {
-  transform: scale(1.05); /* hover animation */
+  transform: scale(1.05);
 }
+
 .content {
   display: flex;
   flex-direction: column;
@@ -35,7 +33,7 @@
 
 .content h4 {
   text-align: center;
-  color: #fff; /* Header*/
+  color: #fff;
   text-shadow: 2px 2px #5f1a37;
   font-size: 1.7rem;
 }
@@ -43,7 +41,7 @@
 .content p {
   height: 100px;
   text-align: start;
-  color: #fff !important; /* Sub-Header*/
+  color: #fff !important;
   font-size: 1.1rem;
   overflow: auto;
 }

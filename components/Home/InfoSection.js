@@ -5,20 +5,18 @@ import ModalContext from "../../context/modal-context";
 import profile from "../../img/profile.jpg";
 import classes from "./InfoSection.module.css";
 
-//!DisplayBio animations are not working correctly!
-
 const InfoSection = () => {
   const modalCtx = useContext(ModalContext);
 
   return (
     <Fragment>
       <section className={classes.container}>
-        <div className={classes["content-profile"]} data-aos="fade-up">
+        <div className={classes.profile} data-aos="fade-up">
           <a onClick={modalCtx.showModal}>
             <Image
               src={profile}
               alt="Perry Morris"
-              className={classes.profile}
+              className={classes["profile-img"]}
               width={200}
               height={200}
             />

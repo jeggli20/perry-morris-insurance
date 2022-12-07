@@ -7,6 +7,7 @@ dotenv.config();
 import EmailAdmin from "../../components/Email/EmailAdmin";
 import EmailClient from "../../components/Email/EmailClient";
 
+// Variables
 const service = process.env.EMAIL_SERVICE;
 const user = process.env.EMAIL_USER;
 const pass = process.env.EMAIL_PASSWORD;
@@ -23,17 +24,15 @@ const transport = {
 let errField;
 let msgError;
 
+// Functions
 const emailAwait = async (emails) => {
-  try {
-    const transporter = createTransport(transport);
-    await transporter.sendMail(emails[0]);
-    await transporter.sendMail(emails[1]);
-    return;
-  } catch (err) {
-    console.log("The error is here!", err);
-  }
+  const transporter = createTransport(transport);
+  await transporter.sendMail(emails[0]);
+  await transporter.sendMail(emails[1]);
+  return;
 };
 
+// Validation Functions
 const isNotEmpty = (value) => String(value).trim() !== "";
 
 const isString = (value) => {
@@ -105,6 +104,7 @@ const handler = async (req, res) => {
       const data = req.body;
       const dataObj = JSON.parse(data);
 
+      // Validation
       if (!isString(dataObj.fName)) {
         errField = "First Name";
         throw new Error("Entered name is not valid");
